@@ -17,7 +17,7 @@ app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
-const users = await sql`SELECT * FROM users`;
+const users = await sqlu`SELECT * FROM users`;
 
 app.get('/users', (req, res) => {
   res.json(users);
