@@ -1,6 +1,9 @@
 import express from 'express'
 import 'dotenv/config'
 import cors from 'cors'
+import postgres from 'postgres'
+
+const sqlu = postgres(process.env.DATABASE_PUBLIC_URL);
 
 const app = express();
 const port = process.env.PORT;
@@ -14,11 +17,9 @@ app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
 
+const users = await sql`SELECT * FROM users`;
+
 app.get('/users', (req, res) => {
-  const users = [
-    { id: 1, name: 'John Doe' },
-    { id: 2, name: 'Jane Smith' },
-  ];
   res.json(users);
 });
 
