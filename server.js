@@ -18,9 +18,12 @@ app.listen(port, () => {
 });
 
 const users = await sqlu`SELECT * FROM users`;
+const navigation = await sqlu`SELECT * FROM nav`;
 
-app.get('/users', (req, res) => {
+app.get('/api/users/list', (req, res) => {
   res.json(users);
 });
 
-// COMMENT
+app.get('/api/navigation/list', (req, res) => {
+  res.json(navigation);
+});
